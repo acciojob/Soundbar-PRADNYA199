@@ -1,8 +1,24 @@
-//your JS code here. If required.
+// script.js
+
+// Array of sound names (without file extension)
+const sounds = ['sound1', 'sound2', 'sound3']; // Add sound file names here
+
 // Reference to currently playing audio
 let currentAudio = null;
 
-// Select all buttons with the class "btn"
+// Get the buttons container
+const buttonsContainer = document.getElementById('buttons');
+
+// Dynamically create a button for each sound
+sounds.forEach(soundName => {
+    const button = document.createElement('button');
+    button.classList.add('btn');
+    button.setAttribute('data-sound', soundName);  // Set data-sound attribute
+    button.textContent = soundName;  // Display the sound name on the button
+    buttonsContainer.appendChild(button);
+});
+
+// Select all dynamically created buttons with the class "btn"
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("click", () => {
         const soundName = button.getAttribute("data-sound");
